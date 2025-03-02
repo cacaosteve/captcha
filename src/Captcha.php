@@ -301,6 +301,14 @@ class Captcha
         }
 
         $this->text();
+		
+	    // === Add your test text here ===
+	    $this->image->text('TEST', 10, 20, function ($font) {
+	        $font->file($this->font());
+	        $font->size(24);
+	        $font->color('#000000'); // black for contrast
+	    });
+	    // === End test text ===
 
         $this->lines();
 
