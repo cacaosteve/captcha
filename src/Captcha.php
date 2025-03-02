@@ -318,11 +318,15 @@ class Captcha
 		return $api ? [
 		    'sensitive' => $generator['sensitive'],
 		    'key' => $generator['key'],
-		    'img' => $this->image->encode('png')->toDataUri()
-		] : new Response($this->image->encode('png'), 200, [
-		    'Content-Type' => 'image/png',
-		    'Content-Disposition' => 'inline; filename="image.png"',
-		]);
+		    'img' => $this->image->encode(new PngEncoder(), $this->quality)->toDataUri()
+		] : new Response(
+		    $this->image->encode(new PngEncoder(), $this->quality), 
+		    200, 
+		    [
+		        'Content-Type' => 'image/png',
+		        'Content-Disposition' => 'inline; filename="image.png"',
+		    ]
+		);
     }
 
     /**
