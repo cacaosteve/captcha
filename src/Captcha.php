@@ -315,14 +315,14 @@ class Captcha
 
         Cache::put($this->get_cache_key($generator['key']), $generator['value'], $this->expire);
 
-        return $api ? [
-            'sensitive' => $generator['sensitive'],
-            'key' => $generator['key'],
-            'img' => $this->image->encode()->toDataUri()
-        ] : new Response($this->image->encode(), 200, [
-            'Content-Type' => 'image/jpeg',
-            'Content-Disposition' => 'inline; filename="image.jpg"',
-        ]);
+		return $api ? [
+		    'sensitive' => $generator['sensitive'],
+		    'key' => $generator['key'],
+		    'img' => $this->image->encode('png')->toDataUri()
+		] : new Response($this->image->encode('png'), 200, [
+		    'Content-Type' => 'image/png',
+		    'Content-Disposition' => 'inline; filename="image.png"',
+		]);
     }
 
     /**
