@@ -382,6 +382,8 @@ class Captcha
             'key' => $hash,
             'encrypt' => $this->encrypt
         ]);
+		
+		\Log::debug('Plain captcha: ' . implode('', $bag));
 
         return [
             'value' => $bag,
