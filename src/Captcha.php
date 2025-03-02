@@ -319,9 +319,9 @@ class Captcha
 		return $api ? [
 		    'sensitive' => $generator['sensitive'],
 		    'key' => $generator['key'],
-		    'img' => $this->image->encode(new PngEncoder(), $this->quality)->toDataUri()
+		    'img' => $this->image->encode('png', $this->quality)->toDataUri()
 		] : new Response(
-		    $this->image->encode(new PngEncoder(), $this->quality), 
+		    $this->image->encode('png', $this->quality), 
 		    200, 
 		    [
 		        'Content-Type' => 'image/png',
